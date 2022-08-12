@@ -1,0 +1,234 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Offcanvas navbar template · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/offcanvas-navbar/">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link href="{% static 'css/offcanvas.css' %}" rel="stylesheet">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+    }
+
+      
+    .nav-link:hover{
+        color:black;
+    
+        text-decoration: underline;
+    
+    
+    }
+    
+</style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" aria-label="Main navigation">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Offcanvas navbar</a>
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Addmissions
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'school-admissions' %}">About Addmissions</a></li>
+              <li><a class="dropdown-item" href="#">Fees</a></li>
+              
+            </ul>
+          </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About Us
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">School Background</a></li>
+              <li><a class="dropdown-item" href="#">Our Mission</a></li>
+              <li><a class="dropdown-item" href="#">Staff Messages</a></li>
+            </ul>
+          </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Desplines
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">School Rules And Regulations</a></li>
+              <li><a class="dropdown-item" href="#">Despline At Intwari</a></li>
+              <li><a class="dropdown-item" href="#">Staff Members</a></li>
+            </ul>
+          </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Online Resources
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'view_books' %}">Online Books</a></li>
+              <li><a class="dropdown-item" href="{% url 'view_courses' %}">Online Courses</a></li>
+              <li><a class="dropdown-item" href="{% url 'view-questions' %}">Online Quiz</a></li>
+            </ul>
+          </li>
+          {% if user == True %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Admin
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="{% url 'student-reg-page' %}">Register Students</a></li>
+          <li><a class="dropdown-item" href="{% url 'staff-reg-page' %}">Register Staff Member</a></li>
+          <li><a class="dropdown-item" href="{% url 'view-students-page' %}">View Students</a></li>
+          <li><a class="dropdown-item" href="{% url 'view-staffs-page' %}">View Staff Members</a></li>
+          <li><a class="dropdown-item" href="{% url 'reg-announcements' %}">Add Announcements</a></li>
+          <li><a class="dropdown-item" href="{% url 'reg_view_posts' %}">Posts</a></li>
+          <li><a class="dropdown-item" href="{% url 'reg_news' %}">Add News</a></li>
+          <li><a class="dropdown-item" href="">Logout</a></li>
+        </ul>
+      </li>
+      {% elif user == False %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Staff
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="{% url 'student-reg-page' %}">News</a></li> 
+          <li><a class="dropdown-item" href="{% url 'view-students-page' %}">View Students</a></li>
+          <li><a class="dropdown-item" href="{% url 'reg-announcements' %}">Add Announcements</a></li>
+          <li><a class="dropdown-item" href="{% url 'reg-questions' %}">Add Questions</a></li>
+          <li><a class="dropdown-item" href="{% url 'reg-courses' %}">Add Courses</a></li>
+          <li><a class="dropdown-item" href="{% url 'reg-books' %}">Add Books</a></li>
+          </ul>
+      </li>
+      
+      {% endif %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              View
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'student-reg-page' %}">News</a></li> 
+              <li><a class="dropdown-item" href="{% url 'reg_view_posts' %}">Posts</a></li>
+              <li><a class="dropdown-item" href="{% url 'view_anns' %}">Announcements</a></li>
+              </ul>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Contact</a>
+          </li>
+          
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-scroller bg-body shadow-sm">
+  <nav class="nav nav-underline" aria-label="Secondary navigation">
+    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+    <a class="nav-link" href="#">
+      Friends
+      <span class="badge bg-light text-dark rounded-pill align-text-bottom">27</span>
+    </a>
+    <a class="nav-link" href="#">Explore</a>
+    <a class="nav-link" href="#">Suggestions</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+  </nav>
+</div>
+
+<main class="container">
+    <div class="p-md-4 col-md-10 mx-auto col-lg-12 bg-light" style="border-radius: 10px;">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
+            <div class="col col-lg-3 bg-success p-2" style="text-align: center;border-radius: 10px;margin-left:10px;">
+                <img src="{% static 'graduated.png' %}" class="rounded-circle" alt="" width="60" height="60">
+                <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
+        
+                <h2>Students</h2>
+                <h5>5</h5>
+                <p><a class="btn btn-secondary" href="#">View details</a></p>
+              </div>
+              <div class="col col-lg-3 bg-success p-2" style="text-align: center;border-radius: 10px;margin-left:10px">
+                <img src="{% static 'teacher.png' %}" class="rounded-circle" alt="" width="60" height="60">
+                <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
+        
+                <h2>Staff</h2>
+                <h5>5</h5>
+                <p><a class="btn btn-secondary" href="#">View details</a></p>
+              </div>
+              <div class="col col-lg-3 bg-success p-2" style="text-align: center;border-radius: 10px;margin-left:10px">
+                <img src="{% static 'news.png' %}" class="rounded-circle" alt="" width="60" height="60">
+                <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
+        
+                <h2>News</h2>
+                <h5>6</h5>
+                <p><a class="btn btn-secondary" href="#">View details</a></p>
+              </div>
+              <div class="col col-lg-3 bg-success p-2" style="text-align: center;border-radius: 10px;margin-left:10px">
+                <img src="{% static 'megaphone.png' %}" class="rounded-circle" alt="" width="60" height="60">
+                <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
+        
+                <h2>Announcements</h2>
+                <h5>3</h5>
+                <p><a class="btn btn-secondary" href="#">View details</a></p>
+              </div>
+              <div class="col col-lg-3 bg-success p-2" style="text-align: center;border-radius: 10px;margin-left:10px">
+                <img src="{% static 'user.png' %}" class="rounded-circle" alt="" width="60" height="60">
+                <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
+        
+                <h2>Users</h2>
+                <h5>10</h5>
+                <p><a class="btn btn-secondary" href="#">View details</a></p>
+              </div>
+              <div class="col col-lg-3 bg-success p-2" style="text-align: center;border-radius: 10px;margin-left:10px;">
+                <img src="{% static 'user.png' %}" class="rounded-circle" alt="" width="60" height="60">
+                <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
+        
+                <h2>Posts</h2>
+                <h5>16</h5>
+                <p><a class="btn btn-secondary" href="#">View details</a></p>
+              </div>
+        </div>
+        
+    </div>
+</div>
+  </body>
+  <script src="{% static 'css/bootstrap.min.js' %}"></script>
+  <script src="{% static 'css/offcanvas.js' %}"></script>
+</html>

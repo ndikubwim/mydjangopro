@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% for post in Posts %}
+    <div class="col p-4 d-flex flex-column position-static">
+        
+        <a href=""><h3 class="mb-0">{{post.title}}</h3></a>
+        
+        <p class="card-text mb-auto">{{post.description}}</p>
+        <a href="#" class="stretched-link">Continue reading</a>
+      </div>
+      
+    {% endfor %}
+    <div>
+        {% if page_obj.has_previous %}
+        <a href="?page=1">First</a>
+        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+        
+        <h2>{{page_obj.number}} Of {{page_obj.paginator.num_pages}}</h2>
+        
+        {% elif page_obj.has_next %}
+        <a href="?page=1">First</a>
+        <a href="?page={{page_obj.next_page_number}}">Next</a>
+        <h2>{{page_obj.number}} Of {{page_obj.paginator.num_pages}}</h2>
+
+        {% endif %}
+    </div>
+
+    <img src="{% static 'images.jpg' %}" alt="" >
+    
+</body>
+</html>

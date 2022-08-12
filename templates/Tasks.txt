@@ -1,0 +1,39 @@
+
+-------------------Model_Tasks---------------------------------------------------------------------
+
+POST:title,Image,Body,Date_Posted
+
+Announcement=Title,Body,To,Date_Announced
+
+Question:Class,Subject,Topic,Sub-Topic,Question,Answer
+
+News:Category,Title,Image,Body,Date_Posted
+
+Course:Category,Title,Image,Body
+
+Books:Class,Subject,Title,DocumentFile
+
+Signup:Staff(User_name,Staff_id,Password),Student(User_name,Student_id,Password)
+
+Login:Student&Staff(User_name,Password) ,Admin(Admin ID,Password)
+
+
+
+-------------vartical-nav-bar-----------
+<nav class="nav flex-column">
+  <a class="nav-link active" aria-current="page" href="#">Active</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled">Disabled</a>
+</nav>
+-------------------------------------------
+
+question=q,Answer
+
+question_choice=multiple question,Detail question,math question
+multiple_question=question_body,option 1,option 2,option 3,option 4
+Detail_question=question_body,Answer
+
+if choice=="multiple_question"
+from question in questions
+question.multiple_question.option1

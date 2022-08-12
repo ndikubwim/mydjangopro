@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<style>
+  .nav-link{
+    font-size: 20px;
+    text-indent: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+
+  }
+  .nav-link:hover{
+    color:black;
+    /* font-weight: bold; */
+    text-decoration: underline;
+    /* line-height: 40px; */
+    
+  }
+</style>
+<body>
+    <div class="col-md-10 mx-auto col-lg-11">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+          <div class="container-fluid">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home-pag' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Addmissions
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'school-admissions' %}">About Addmissions</a></li>
+                    <li><a class="dropdown-item" href="#">Fees</a></li>
+                    
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    About Us
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">School Background</a></li>
+                    <li><a class="dropdown-item" href="#">Our Mission</a></li>
+                    <li><a class="dropdown-item" href="#">Staff Messages</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Desplines
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">School Rules And Regulations</a></li>
+                    <li><a class="dropdown-item" href="#">Despline At Intwari</a></li>
+                    <li><a class="dropdown-item" href="#">Staff Members</a></li>
+                  </ul>
+                </li>
+                {% if user == True %}
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="{% url 'dashboard' %}">Admin</a>
+            </li> 
+            {% elif user == False %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Staff
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <!-- <li><a class="dropdown-item" href="{% url 'student-reg-page' %}">News</a></li> -->
+                <li><a class="dropdown-item" href="{% url 'view-students-page' %}">View Students</a></li>
+                <li><a class="dropdown-item" href="{% url 'reg-announcements' %}">Add Announcements</a></li>
+                <li><a class="dropdown-item" href="{% url 'reg-questions' %}">Add Questions</a></li>
+                <li><a class="dropdown-item" href="{% url 'reg-courses' %}">Add Courses</a></li>
+                <li><a class="dropdown-item" href="{% url 'reg-books' %}">Add Books</a></li>
+                </ul>
+            </li>
+            
+            {% endif %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    View
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <!-- <li><a class="dropdown-item" href="{% url 'student-reg-page' %}">News</a></li> -->
+                    <li><a class="dropdown-item" href="{% url 'reg_view_posts' %}">Posts</a></li>
+                    <li><a class="dropdown-item" href="{% url 'view_anns' %}">Announcements</a></li>
+                    </ul>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                </li>
+                
+                
+              </ul>
+              <!-- <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form> -->
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="p-4 p-md-4 mb-4 text-white rounded bg-success col-md-10 col-lg-11 mx-auto" style="text-align: center;">
+        <div class="col-md-16 px-10">
+          <h1 class="display-4 fst-italic">Add Announcements  </h1>
+          <p class="lead my-3">Welcome To Intwari Student Registration Center Where Your Are Provided The Form To Fill And Add Announcements</p>
+          <!-- <p class="lead mb-0"><a href="{% url 'reg_news' %}" class="text-white fw-bold">Continue To News ...</a></p> -->
+        </div>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-11">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" method="POST" enctype="multipart/form-data" >{% csrf_token %}
+
+            
+          <!-- {{form}} -->
+          <!-- <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Smith" name="title">
+            <label for="floatingInput">Title</label>
+          </div>
+          <div class="form-group">
+            <label for="" class="form-label">Picture</label>
+            <input type="file"  name="image" id="" placeholder="Please Choose The Image File" enctype="multipart/form-data" >
+            
+            
+          </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" id="" placeholder="Primary Six(P6)" name="body" style="height: 200px;">
+            </textarea>  
+            <label for="floatingInput">Announcement Body Content</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="floatingdate" name="dp">
+            <label for="floatingInput">Date Posted</label>
+          </div> -->
+          {{form}}
+          
+          
+          
+          <!-- <div class="form-floating mb-3">
+            <input type="file" name="fileupload">
+            
+          </div> -->
+
+          
+          <button class="w-100 btn btn-lg btn-primary" type="submit" value="Save">Register</button>
+          <hr class="my-4">
+          <small class="text-muted">By clicking Register, you agree to Register The Provided Data To Database.</small>
+        </form>
+      </div>
+  </div>
+      <!-- <div class="col-md-10 mx-auto col-lg-8"> -->
+        <!-- <img src="{% static 'anns.jpg' %}" alt=""> -->
+      <!-- </div> -->
+          
+</body>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script> -->
+<script src="{% static 'css/bootstrap.min.js' %}"></script>
+<!-- <script></script> -->
+</html>
